@@ -5,10 +5,10 @@ export const combinaisons = [
     },
     {
         name: "Large Straight",
-        rewardAmount: 1
+        rewardAmount: 2
     },
     {
         name: "Yahtzee",
-        rewardAmount: 1
+        rewardAmount: 3
     }
 ]
