@@ -1,10 +1,20 @@
-import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import LayoutNav from "./components/LayoutNav";
 
 const App = () => {
 	return (
-		<div>
-			<h1>App</h1>
-		</div>
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route
+				path="*"
+				element={
+					<LayoutNav>
+						<h1>Not Found</h1>
+					</LayoutNav>
+				}
+			/>
+		</Routes>
 	);
 };
 
