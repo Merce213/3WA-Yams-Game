@@ -40,14 +40,18 @@ const GameOver = () => {
 									<Button
 										text={"QUIT"}
 										bgColor={"bg-yams-blue"}
-										hexColorShadow={"#38ACDE"}
+										styles={
+											"[box-shadow:_0px_0px_15px_2px_#38ACDE;] hover:[box-shadow:_0px_0px_15px_6px_#38ACDE;] "
+										}
 										onClick={handleQuit}
 									/>
 
 									<Button
 										text={"TRY AGAIN?"}
 										bgColor={"bg-yams-green"}
-										hexColorShadow={"#0AD48C"}
+										styles={
+											"[box-shadow:_0px_0px_15px_2px_#0AD48C;] hover:[box-shadow:_0px_0px_15px_6px_#0AD48C;] "
+										}
 										onClick={handleTryAgain}
 									/>
 								</div>

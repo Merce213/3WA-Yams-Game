@@ -73,8 +73,10 @@ const Win = () => {
 								<Button
 									text={"QUIT"}
 									bgColor={"bg-yams-blue"}
-									hexColorShadow={"#38ACDE"}
-									className={"w-3/4 mx-auto"}
+									styles={
+										"[box-shadow:_0px_0px_15px_2px_#38ACDE;] hover:[box-shadow:_0px_0px_15px_6px_#38ACDE;] "
+									}
+									onClick={handleQuit}
 								/>
 							</div>
 						</div>
