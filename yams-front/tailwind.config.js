@@ -28,6 +28,7 @@ export default {
 			},
 			animation: {
 				"background-shine": "background-shine 2s linear infinite",
+				'slide-down': 'slideDown 0.5s forwards',
 			},
 			keyframes: {
 				"background-shine": {
@@ -37,6 +38,10 @@ export default {
 					to: {
 						backgroundPosition: "-200% 0",
 					},
+				},
+				"slideDown": {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(0)' }
 				},
 			},
 		},

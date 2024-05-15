@@ -1,28 +1,56 @@
 import { useState } from "react";
+import { useVerifyCredentialsMutation } from "../features/auth";
+import { useNavigate } from "react-router-dom";
+import StatusMessageModal from "../components/StatusMessageModal";
 
 const Login = () => {
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [verifyCredentials] = useVerifyCredentialsMutation();
+	const navigate = useNavigate();
+    const [modal, setModal] = useState({ message: "", type: "", visible: false});
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		if (name === "username") {
-			setUsername(value);
+		if (name === "email") {
+			setEmail(value);
 		} else if (name === "password") {
 			setPassword(value);
 		}
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (!email || !password) {
+			setModal({ message: "Please fill in all fields", type: 'error', visible: true });
+			return;
+		}
 
-		const data = {
-			username,
-			password,
-		};
+		if (!isEmailValid(email)) {
+			setModal({ message: "Please enter a valid email", type: 'error', visible: true });
+			return;
+		}
 
-		console.log(data);
+		try {
+			const response = await verifyCredentials({ email, password });
+			if (response.error) {
+				setModal({ message: "Login failed, please try again", type: 'error', visible: true });
+			} else {
+				setModal({ message: "Login successful, redirecting...", type: 'success', visible: true });
+				setTimeout(() => {
+					navigate('/admin');
+				}, 2000);
+			}
+		} catch (err) {
+			console.error(err);
+		}
 	};
+
+	function isEmailValid(email) {
+		const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+		return re.test(email);
+	}
+
 
 	return (
 		<main>
@@ -46,16 +74,16 @@ const Login = () => {
 							>
 								<div>
 									<label
-										htmlFor="username"
+										htmlFor="email"
 										className="text-white font-yams-body"
 									>
-										Username
+										Email
 									</label>
 									<input
-										type="text"
-										id="username"
-										name="username"
-										value={username}
+										type="email"
+										id="email"
+										name="email"
+										value={email}
 										onChange={handleChange}
 										className="w-full h-12 px-3 py-2 mt-2 rounded-md border border-[#CFCFCF] bg-transparent text-white font-yams-body focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50"
 									/>
@@ -89,6 +117,14 @@ const Login = () => {
 					</div>
 				</div>
 			</section>
+			{modal.visible && (
+				<StatusMessageModal
+					message={modal.message}
+					type={modal.type}
+					visible={modal.visible}
+					onClose={() => setModal({ message: "", type: "", visible: false })}
+				/>
+			)}
 		</main>
 	);
 };
