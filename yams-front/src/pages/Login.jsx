@@ -13,7 +13,6 @@ const Login = () => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		if (name === "email") {
-			console.log(value)
 			setEmail(value);
 		} else if (name === "password") {
 			setPassword(value);
@@ -22,7 +21,6 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(email, password)
 		if (!email || !password) {
 			setModal({ message: "Please fill in all fields", type: 'error', visible: true });
 			return;
