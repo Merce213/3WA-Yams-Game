@@ -10,7 +10,7 @@ export default {
 			fontFamily: {
 				"yams-title": ["Amita", "serif"],
 				"yams-body": ["Inter", "sans-serif"],
-				"yams-gameover": ["Cherry Bomb One", "system-ui"],
+				"yams-cherry": ["Cherry Bomb One", "system-ui"],
 			},
 			fontSize: {
 				sm: "clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem)",
