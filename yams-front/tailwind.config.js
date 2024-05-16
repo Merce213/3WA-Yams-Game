@@ -6,7 +6,7 @@ export default {
 			colors: {
 				"yams-blue": "#38ACDE",
 				"yams-green": "#0AD48C",
-				"yarms-yellow": "#FFB801",
+				"yams-yellow": "#FFB801",
 			},
 			fontFamily: {
 				"yams-title": ["Amita", "serif"],
