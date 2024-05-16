@@ -34,7 +34,7 @@ const ModalDeletePastry = ({ open, setOpen, id }) => {
 				</DialogTitle>
 				<Divider />
 				<DialogContent>
-					Do u really want to delete this pastry?
+					Do you really want to delete this pastry?
 				</DialogContent>
 				<DialogActions>
 					<Button
