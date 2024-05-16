@@ -6,6 +6,7 @@ export default {
 			colors: {
 				"yams-blue": "#38ACDE",
 				"yams-green": "#0AD48C",
+				"yams-yellow": "#FFB801",
 			},
 			fontFamily: {
 				"yams-title": ["Amita", "serif"],
@@ -28,7 +29,7 @@ export default {
 			},
 			animation: {
 				"background-shine": "background-shine 2s linear infinite",
-				'slide-down': 'slideDown 0.5s forwards',
+				"slide-down": "slideDown 0.5s forwards",
 			},
 			keyframes: {
 				"background-shine": {
@@ -39,9 +40,9 @@ export default {
 						backgroundPosition: "-200% 0",
 					},
 				},
-				"slideDown": {
-					'0%': { transform: 'translateY(-100%)' },
-					'100%': { transform: 'translateY(0)' }
+				slideDown: {
+					"0%": { transform: "translateY(-100%)" },
+					"100%": { transform: "translateY(0)" },
 				},
 			},
 		},

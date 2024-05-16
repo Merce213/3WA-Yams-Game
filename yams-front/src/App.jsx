@@ -4,11 +4,20 @@ import LayoutNav from "./components/LayoutNav";
 import Login from "./pages/Login";
 import GameOver from "./pages/GameOver";
 import Win from "./pages/Win";
+import Game from "./pages/Game";
 
 const App = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
+			<Route
+				path="/game"
+				element={
+					<LayoutNav>
+						<Game />
+					</LayoutNav>
+				}
+			/>
 			<Route path="/login" element={<Login />} />
 			<Route
 				path="/win"
