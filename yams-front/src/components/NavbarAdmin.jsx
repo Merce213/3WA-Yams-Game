@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarAdmin = () => {
 	return (
@@ -10,7 +11,7 @@ const NavbarAdmin = () => {
 				</NavLink>
 				<div className="flex items-center gap-2">
 					<span>alice@alice.fr</span>
-					<AccountCircleTwoToneIcon />
+					<FontAwesomeIcon icon={faCircleUser} className="w-6 h-6" />
 				</div>
 			</nav>
 		</header>

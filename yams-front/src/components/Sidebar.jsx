@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import SpeedIcon from "@mui/icons-material/Speed";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGaugeHigh, faListUl } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
 	return (
@@ -17,7 +17,10 @@ const Sidebar = () => {
 							}`
 						}
 					>
-						<SpeedIcon color="" />
+						<FontAwesomeIcon
+							icon={faGaugeHigh}
+							className="w-6 h-6"
+						/>
 						<span className="hidden lg:block">Dashboard</span>
 					</NavLink>
 					<NavLink
@@ -29,7 +32,7 @@ const Sidebar = () => {
 							}`
 						}
 					>
-						<FormatListBulletedIcon color="" />
+						<FontAwesomeIcon icon={faListUl} className="w-6 h-6" />
 						<span className="hidden lg:block">Pastries</span>
 					</NavLink>
 				</div>
