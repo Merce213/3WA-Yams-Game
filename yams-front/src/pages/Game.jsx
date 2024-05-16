@@ -27,7 +27,7 @@ const Game = () => {
 									<p>Winning combinaisons</p>
 								</div>
 
-								<div className="flex flex-col gap-4 p-4">
+								<div className="flex flex-col gap-6 p-2">
 									<div className="flex flex-col items-center pt-10">
 										<p className="text-base font-yams-body">
 											Yams
@@ -60,6 +60,65 @@ const Game = () => {
 											/>
 										</div>
 									</div>
+									<div className="flex flex-col items-center">
+										<p className="text-base font-yams-body">
+											Four of a kind
+										</p>
+										<div className="flex gap-2 w-max">
+											<img
+												src={Die4}
+												alt="die4"
+												className="w-8 h-8"
+											/>
+											<img
+												src={Die4}
+												alt="die4"
+												className="w-8 h-8"
+											/>
+											<img
+												src={Die4}
+												alt="die4"
+												className="w-8 h-8"
+											/>
+											<img
+												src={Die4}
+												alt="die4"
+												className="w-8 h-8"
+											/>
+										</div>
+									</div>
+									<div className="flex flex-col items-center">
+										<p className="text-base font-yams-body">
+											Long straight
+										</p>
+										<div className="flex gap-2 w-max">
+											<img
+												src={Die1}
+												alt="die 1"
+												className="w-8 h-8"
+											/>
+											<img
+												src={Die2}
+												alt="die 2"
+												className="w-8 h-8"
+											/>
+											<img
+												src={Die3}
+												alt="die 3"
+												className="w-8 h-8"
+											/>
+											<img
+												src={Die4}
+												alt="die 4"
+												className="w-8 h-8"
+											/>
+											<img
+												src={Die5}
+												alt="die 5"
+												className="w-8 h-8"
+											/>
+										</div>
+									</div>
 								</div>
 							</div>
 
@@ -78,9 +137,36 @@ const Game = () => {
 							</div>
 
 							<div className="hidden md:block bg-[#414141] h-[640px] flex-grow flex-shrink-0 max-w-52 lg:max-w-64 border border-yarms-yellow rounded-2xl">
-								<div className="h-full">
-									<div className="[border-radius:_50%_50%_0_0;] border-b border-yarms-yellow p-2 text-center text-yarms-yellow text-base font-yams-body bg-[#353535]">
-										<p>Rewards left</p>
+								<div className="[border-radius:_50%_50%_0_0;] border-b border-yarms-yellow p-2 text-center text-yarms-yellow text-base font-yams-body bg-[#353535]">
+									<p>Rewards left</p>
+								</div>
+
+								<div className="flex flex-col gap-6 p-2">
+									<div className="flex flex-col justify-center gap-6 pt-10 font-yams-body text-sm">
+										<div className="flex space-x-3">
+											<span className="font-extrabold text-yarms-yellow">
+												1
+											</span>
+											<p className="font-semibold">
+												Fondant supreme
+											</p>
+										</div>
+										<div className="flex space-x-3">
+											<span className="font-extrabold text-yarms-yellow">
+												3
+											</span>
+											<p className="font-semibold">
+												Eclairs au chocolat
+											</p>
+										</div>
+										<div className="flex space-x-3">
+											<span className="font-extrabold text-yarms-yellow">
+												4
+											</span>
+											<p className="font-semibold">
+												Cake framboise chocolat
+											</p>
+										</div>
 									</div>
 								</div>
 							</div>
