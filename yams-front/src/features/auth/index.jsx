@@ -3,7 +3,7 @@ import { serverUri } from '../../config/api';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({ baseUrl: serverUri }),
+  baseQuery: fetchBaseQuery({ baseUrl: serverUri, credentials: 'include'}),
   endpoints: (builder) => ({
 
     verifyCredentials: builder.mutation({

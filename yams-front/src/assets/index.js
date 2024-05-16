@@ -1,0 +1,10 @@
+export { default as Die1 } from './die1.png';
+export { default as Die2 } from './die2.png';
+export { default as Die3 } from './die3.png';
+export { default as Die4 } from './die4.png';
+export { default as Die5 } from './die5.png';
+export { default as Die6 } from './die6.png';
+export { default as Star } from './star.png';
+export { default as Skull } from './skull.png';
+export { default as Trophy } from './trophy.png';
+export { default as StartMessage } from './startMessage.png';

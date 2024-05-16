@@ -25,12 +25,14 @@ export function checkWinningCombination(diceResult) {
 
 function isWinningCombination(diceResult, combinationName) {
     switch (combinationName) {
+        case "Yahtzee":
+            return hasYahtzee(diceResult);
         case "Four of a Kind":
             return hasFourOfAKind(diceResult);
         case "Large Straight":
             return hasLargeStraight(diceResult);
-        case "Yahtzee":
-            return hasYahtzee(diceResult);
+        case "Three of a Kind":
+            return hasThreeOfAKind(diceResult);    
         default:
             return false;
     }
@@ -59,6 +61,17 @@ function hasLargeStraight(diceResult) {
 
 function hasYahtzee(diceResult) {
     return new Set(diceResult).size === 1;
+}
+
+function hasThreeOfAKind(diceResult) {
+    const counts = {};
+    for (const die of diceResult) {
+        counts[die] = (counts[die] || 0) + 1;
+        if (counts[die] >= 3) {
+            return true;
+        }
+    }
+    return false;
 }
 
 export function isGameOver(roll) {

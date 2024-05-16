@@ -1,10 +1,14 @@
 import Trophy from "../assets/trophy.png";
-import Star from "../assets/star.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import { useGetWonPastriesQuery } from "../features/pastries";
+import RewardsList from "../components/RewardsList";
 
 const Win = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
+	const rewardsAmount = location.state?.rewardsAmount || 0;
+	const { data: rewards, isError, isLoading } = useGetWonPastriesQuery(rewardsAmount);
 
 	const handleQuit = () => {
 		navigate("/");
@@ -20,7 +24,7 @@ const Win = () => {
 								<img
 									src={Trophy}
 									alt="trophy icon"
-									className="w-28 h-28 md:w-40 md:h-40 mx-auto"
+									className="w-28 h-28 md:w-40 md:h-40 mx-auto aspect-auto"
 								/>
 								<h1 className="text-transparent bg-clip-text bg-gradient-to-t from-[#FF2E00] to-[#FFD600] text-3xl font-yams-cherry [-webkit-text-stroke:1px_black;] [-moz-text-stroke:1px_black;]">
 									Your rewards!
@@ -28,48 +32,9 @@ const Win = () => {
 							</div>
 
 							<div className="flex flex-col gap-10">
-								<div className="flex flex-col gap-4">
-									<div className="flex items-center gap-4 font-yams-cherry text-base tracking-wide">
-										<img
-											src={Star}
-											alt="star icon"
-											className="w-10 h-10"
-										/>
-										<div className="flex space-x-2">
-											<span className="text-transparent bg-clip-text bg-gradient-to-t from-[#FF2E00] to-[#FFD600]">
-												2
-											</span>
-											<p>Fondant supreme</p>
-										</div>
-									</div>
-									<div className="flex items-center gap-4 font-yams-cherry text-base tracking-wide">
-										<img
-											src={Star}
-											alt="star icon"
-											className="w-10 h-10"
-										/>
-										<div className="flex space-x-2">
-											<span className="text-transparent bg-clip-text bg-gradient-to-t from-[#FF2E00] to-[#FFD600]">
-												1
-											</span>
-											<p>Cake Chocolat</p>
-										</div>
-									</div>
-									<div className="flex items-center gap-4 font-yams-cherry text-base tracking-wide">
-										<img
-											src={Star}
-											alt="star icon"
-											className="w-10 h-10"
-										/>
-										<div className="flex space-x-2">
-											<span className="text-transparent bg-clip-text bg-gradient-to-t from-[#FF2E00] to-[#FFD600]">
-												3
-											</span>
-											<p>Brioche sucrée au chocolat</p>
-										</div>
-									</div>
-								</div>
-
+								{!isLoading && (
+									rewards && <RewardsList rewards={rewards} />
+								)}
 								<Button
 									text={"QUIT"}
 									bgColor={"bg-yams-blue"}

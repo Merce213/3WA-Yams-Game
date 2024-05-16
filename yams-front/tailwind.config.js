@@ -9,6 +9,8 @@ export default {
 				"yams-yellow": "#FFB801",
 				"yams-purple": "#605CA8",
 				"yams-active-link": "#554BFF",
+				"yams-disabled": "#8C8C8C",
+				"yams-bg-disabled": "#626262",
 			},
 			fontFamily: {
 				"yams-title": ["Amita", "serif"],
