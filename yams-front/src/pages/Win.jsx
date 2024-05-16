@@ -7,8 +7,8 @@ import RewardsList from "../components/RewardsList";
 const Win = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-    const rewardsAmount = location.state?.rewardsAmount || 0;
-    const { data: rewards, isError, isLoading } = useGetWonPastriesQuery(rewardsAmount);
+	const rewardsAmount = location.state?.rewardsAmount || 0;
+	const { data: rewards, isError, isLoading } = useGetWonPastriesQuery(rewardsAmount);
 
 	const handleQuit = () => {
 		navigate("/");
@@ -32,9 +32,7 @@ const Win = () => {
 							</div>
 
 							<div className="flex flex-col gap-10">
-							{isLoading ? (
-									<p>Loading...</p>
-								) : (
+								{!isLoading && (
 									rewards && <RewardsList rewards={rewards} />
 								)}
 								<Button
