@@ -6,6 +6,7 @@ import GameOver from "./pages/GameOver";
 import Win from "./pages/Win";
 import Game from "./pages/Game";
 import Dashboard from "./pages/Dashboard";
+import AdminPastries from "./pages/AdminPastries";
 
 const App = () => {
 	return (
@@ -25,6 +26,14 @@ const App = () => {
 				element={
 					<LayoutNav>
 						<Dashboard />
+					</LayoutNav>
+				}
+			/>
+			<Route
+				path="/admin/pastries"
+				element={
+					<LayoutNav>
+						<AdminPastries />
 					</LayoutNav>
 				}
 			/>
