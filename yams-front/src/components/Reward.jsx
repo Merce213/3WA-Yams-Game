@@ -1,7 +1,7 @@
 import Star from "../assets/star.png";
 
 const Reward = ({ reward }) => {
-    console.log(reward.name)
+
     return (
         <div className="flex items-center gap-4 font-yams-cherry text-base tracking-wide">
             <img
