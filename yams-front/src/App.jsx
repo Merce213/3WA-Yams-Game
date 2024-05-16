@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import GameOver from "./pages/GameOver";
 import Win from "./pages/Win";
 import Game from "./pages/Game";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
 	return (
@@ -19,6 +20,14 @@ const App = () => {
 				}
 			/>
 			<Route path="/login" element={<Login />} />
+			<Route
+				path="/admin"
+				element={
+					<LayoutNav>
+						<Dashboard />
+					</LayoutNav>
+				}
+			/>
 			<Route
 				path="/win"
 				element={

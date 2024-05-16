@@ -7,6 +7,8 @@ export default {
 				"yams-blue": "#38ACDE",
 				"yams-green": "#0AD48C",
 				"yams-yellow": "#FFB801",
+				"yams-purple": "#605CA8",
+				"yams-active-link": "#554BFF",
 			},
 			fontFamily: {
 				"yams-title": ["Amita", "serif"],
