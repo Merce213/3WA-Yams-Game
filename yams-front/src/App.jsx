@@ -20,13 +20,6 @@ const App = () => {
 				}
 			/>
 			<Route path="/login" element={<Login />} />
-			<Route path="/game" 
-				element={
-					<LayoutNav>
-						<Game />
-					</LayoutNav>
-				}
-			/>
 			<Route
 				path="/admin"
 				element={
