@@ -13,7 +13,7 @@ const Game = () => {
     const diceImages = [Die1, Die2, Die3, Die4, Die5, Die6];
     const [isPageLoaded, setIsPageLoaded] = useState(false);
     const { data: rewardsLeft, isError, isLoading, refetch } = useGetPastriesQuery();
-    const [rollLeft, setRollLeft] = useState(3);
+    const [rollLeft, setRollLeft] = useState(settings.maxRolls);
     const navigate = useNavigate();
     const [rolling, setRolling] = useState(false);
 
