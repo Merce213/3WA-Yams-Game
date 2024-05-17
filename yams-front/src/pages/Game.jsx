@@ -19,7 +19,11 @@ const Game = () => {
 
     const handleRollDice = () => {
         if (rollLeft === 0 || rolling) return;
-        setDice(rollDice(5));
+        if(rollLeft === 2) {
+            setDice([6, 6, 6, 6, 6]);
+        } else {
+            setDice(rollDice(5));
+        }
         setRolling(true);
         setRollLeft(rollLeft - 1);
     };
