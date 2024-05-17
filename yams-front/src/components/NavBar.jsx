@@ -7,9 +7,9 @@ const NavBar = () => {
 				<NavLink to="/" className="font-yams-title text-xl">
 					Yams
 				</NavLink>
-				<p className="font-yams-body hover:scale-105 hover:underline hover:underline-offset-2 transition-all duration-200">
+				<NavLink to="/credits" className="font-yams-body hover:underline hover:underline-offset-2 transition-all duration-200">
 					Credits
-				</p>
+				</NavLink>
 			</nav>
 		</header>
 	);
