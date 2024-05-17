@@ -54,7 +54,7 @@ const PastriesTable = ({ pastries }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{pastries.map((pastrie) => (
+						{pastries?.map((pastrie) => (
 							<tr key={pastrie.id}>
 								<td>
 									<Typography level="body-xs">

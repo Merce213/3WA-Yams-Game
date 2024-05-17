@@ -20,7 +20,7 @@ const PastriesList = ({ pastries }) => {
 				borderRadius: 15,
 			}}
 		>
-			{pastries.map((pastrie) => (
+			{pastries?.map((pastrie) => (
 				<List
 					key={pastrie.id}
 					size="sm"
