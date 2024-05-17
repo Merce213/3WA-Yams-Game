@@ -7,10 +7,12 @@ const StatusMessageModal = ({ message, type, visible, onClose }) => {
         let timer;
         if (message && visible) {
             timer = setTimeout(() => {
-                onClose();
+                if (visible) {
+                    onClose();
+                }
             }, 2000);
         }
-
+    
         return () => clearTimeout(timer);
     }, [message, visible, onClose]);
 
