@@ -84,7 +84,13 @@ const ModalAddPastry = ({ open, setOpen }) => {
 		}
 
 		try {
-			addPastry(pastryData)
+			const formData = new FormData();
+			formData.append("name", pastryData.name);
+			formData.append("quantity", pastryData.quantity);
+			formData.append("image", pastryData.image);
+			formData.append("choice", pastryData.choice);
+
+			addPastry(formData)
 				.unwrap()
 				.then((data) => {
 					console.log(data);
