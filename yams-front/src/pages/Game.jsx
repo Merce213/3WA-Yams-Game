@@ -25,7 +25,12 @@ const Game = () => {
     };
 
     useEffect(() => {
-        refetch();
+        if (isGameOver(rollLeft)) {
+            refetch();
+        }
+    }, [rollLeft]);
+
+    useEffect(() => {
         setTimeout(() => {
             setIsPageLoaded(true);
         }, 50);
