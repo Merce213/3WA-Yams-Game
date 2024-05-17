@@ -52,7 +52,7 @@ export const pastriesApi = createApi({
 
 		addPastry: builder.mutation({
 			query: (pastryData) => ({
-				url: "/",
+				url: "/pastry",
 				method: "POST",
 				body: pastryData,
 			}),
@@ -68,7 +68,7 @@ export const pastriesApi = createApi({
 
 		deletePastry: builder.mutation({
 			query: (id) => ({
-				url: `/${id}`,
+				url: `/pastry/${id}`,
 				method: "DELETE",
 			}),
 		}),
