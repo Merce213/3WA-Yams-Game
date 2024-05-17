@@ -38,7 +38,7 @@ const Login = () => {
 			} else {
 				setModal({ message: "Login successful, redirecting...", type: 'success', visible: true });
 				setTimeout(() => {
-					navigate('/admin');
+					navigate('/admin/dashboard');
 				}, 2000);
 			}
 		} catch (err) {

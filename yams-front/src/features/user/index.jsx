@@ -4,7 +4,7 @@ import { serverUri } from '../../config/api';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery(`${serverUri}`),
+  baseQuery: fetchBaseQuery({ baseUrl: serverUri, credentials: 'include' }),
   endpoints: (builder) => ({
 
     getAllUsers: builder.query({
