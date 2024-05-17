@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 
 const Home = () => {
@@ -43,9 +43,9 @@ const Home = () => {
 								Start the game !
 							</button>
 
-							<p className="cursor-pointer text-white text-center font-yams-body md:absolute md:bottom-0 md:right-0 md:p-4 hover:scale-105 hover:underline hover:underline-offset-2 transition-all duration-200">
+							<NavLink to="/credits" className="cursor-pointer text-white text-center font-yams-body md:absolute md:bottom-0 md:right-0 md:p-4 hover:underline hover:underline-offset-2 transition-all duration-200">
 								Credits
-							</p>
+							</NavLink>
 						</div>
 					</div>
 				</div>

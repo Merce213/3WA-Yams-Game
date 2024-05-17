@@ -8,6 +8,7 @@ import Game from "./pages/Game";
 import Dashboard from "./pages/Dashboard";
 import AdminPastries from "./pages/AdminPastries";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
+import Credits from "./pages/Credits";
 
 const App = () => {
 	return (
@@ -43,6 +44,14 @@ const App = () => {
 				element={
 					<LayoutNav>
 						<h1>Not Found</h1>
+					</LayoutNav>
+				}
+			/>
+			<Route
+				path="/credits"
+				element={
+					<LayoutNav>
+						<Credits/>
 					</LayoutNav>
 				}
 			/>
