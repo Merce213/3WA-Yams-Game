@@ -7,6 +7,7 @@ import Win from "./pages/Win";
 import Game from "./pages/Game";
 import Dashboard from "./pages/Dashboard";
 import AdminPastries from "./pages/AdminPastries";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 
 const App = () => {
 	return (
@@ -21,22 +22,6 @@ const App = () => {
 				}
 			/>
 			<Route path="/login" element={<Login />} />
-			<Route
-				path="/admin"
-				element={
-					<LayoutNav>
-						<Dashboard />
-					</LayoutNav>
-				}
-			/>
-			<Route
-				path="/admin/pastries"
-				element={
-					<LayoutNav>
-						<AdminPastries />
-					</LayoutNav>
-				}
-			/>
 			<Route
 				path="/win"
 				element={
@@ -61,6 +46,18 @@ const App = () => {
 					</LayoutNav>
 				}
 			/>
+			<Route path="/admin/*" element={<ProtectedRoutes />}>
+				<Route path="dashboard" element={
+					<LayoutNav>
+					<Dashboard />
+					</LayoutNav>
+				}/>
+				<Route path="pastries" element={
+					<LayoutNav>
+					<AdminPastries />
+					</LayoutNav>
+				}/>
+			</Route>
 		</Routes>
 	);
 };

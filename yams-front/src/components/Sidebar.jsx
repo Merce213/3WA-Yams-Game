@@ -8,7 +8,7 @@ const Sidebar = () => {
 			<div className="h-full pt-28 p-4">
 				<div className="flex flex-col items-center gap-5 w-full">
 					<NavLink
-						to="/admin"
+						to="/admin/dashboard"
 						end
 						title="Dashboard"
 						className={({ isActive }) =>
