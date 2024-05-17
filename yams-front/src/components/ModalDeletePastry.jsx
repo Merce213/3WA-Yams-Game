@@ -7,9 +7,17 @@ import {
 	Modal,
 	ModalDialog,
 } from "@mui/joy";
+import { useDeletePastryMutation } from "../features/crud";
 
 const ModalDeletePastry = ({ open, setOpen, id }) => {
-	const handleClick = async (id) => {};
+	const [deletePastry] = useDeletePastryMutation();
+
+	const handleClick = async (id) => {
+		await deletePastry(id);
+		setOpen(false);
+
+		window.location.reload();
+	};
 
 	return (
 		<Modal open={open} onClose={() => setOpen(false)}>
@@ -40,7 +48,7 @@ const ModalDeletePastry = ({ open, setOpen, id }) => {
 					<Button
 						variant="solid"
 						color="danger"
-						// onClick={() => handleClick(id)}
+						onClick={() => handleClick(id)}
 					>
 						Delete
 					</Button>

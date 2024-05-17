@@ -68,7 +68,7 @@ export const pastriesApi = createApi({
 
 		deletePastry: builder.mutation({
 			query: (id) => ({
-				url: `/${id}`,
+				url: `/pastry/${id}`,
 				method: "DELETE",
 			}),
 		}),
