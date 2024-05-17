@@ -24,15 +24,14 @@ const Game = () => {
         } else {
             setDice(rollDice(5));
         }
+
         setRolling(true);
         setRollLeft(rollLeft - 1);
     };
 
     useEffect(() => {
-        if (isGameOver(rollLeft)) {
-            refetch();
-        }
-    }, [rollLeft]);
+        refetch();
+    }, []);
 
     useEffect(() => {
         setTimeout(() => {
