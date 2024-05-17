@@ -1,12 +1,8 @@
-import { useEffect } from 'react';
 import { useCheckAuthQuery } from '../features/user';
 import { Outlet, Navigate } from 'react-router-dom'
 
 const ProtectedRoutes = () => {
     const { data, error, isLoading } = useCheckAuthQuery();
-    console.log('Data:', data);
-    console.log('Error:', error);
-    console.log('Is Loading:', isLoading);
 
     if (isLoading) {
         return <div>Loading...</div>;
