@@ -22,8 +22,6 @@ const ModalAddPastry = ({ open, setOpen }) => {
 		choice: "false",
 	});
 
-	console.log("pastryData", pastryData);
-
 	const [errors, setErrors] = useState({});
 
 	const handleChange = (e) => {

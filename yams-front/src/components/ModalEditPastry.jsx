@@ -22,8 +22,6 @@ const ModalEditPastry = ({ open, setOpen, id }) => {
 		choice: "false",
 	});
 
-	console.log("pastryData", pastryData);
-
 	const [errors, setErrors] = useState({});
 
 	useEffect(() => {}, [id]);
