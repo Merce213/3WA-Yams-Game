@@ -123,12 +123,9 @@ router.post(
 	authentified,
 	upload.single("image"),
 	async (req: CustomRequest, res: Response) => {
-		console.log("req.body", req.body);
-		console.log("req.file", req.file);
 		const { name, quantity, image, choice } = req?.file
 			? trimAll(JSON.parse(req.body?.pastry))
 			: trimAll(req.body);
-		console.log("data:", { name, quantity, image, choice });
 
 		const p: Pastry = {
 			name: name ?? null,

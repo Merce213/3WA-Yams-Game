@@ -85,10 +85,15 @@ const ModalAddPastry = ({ open, setOpen }) => {
 
 		try {
 			const formData = new FormData();
-			formData.append("name", pastryData.name);
-			formData.append("quantity", pastryData.quantity);
 			formData.append("image", pastryData.image);
-			formData.append("choice", pastryData.choice);
+			formData.append(
+				"pastry",
+				JSON.stringify({
+					quantity: pastryData.quantity,
+					choice: pastryData.choice,
+					name: pastryData.name,
+				})
+			);
 
 			addPastry(formData)
 				.unwrap()
@@ -118,7 +123,18 @@ const ModalAddPastry = ({ open, setOpen }) => {
 	};
 
 	return (
-		<Modal open={open} onClose={() => setOpen(false)}>
+		<Modal
+			open={open}
+			onClose={() => {
+				setOpen(false);
+				setPastryData({
+					name: "",
+					quantity: "",
+					image: "",
+					choice: Boolean,
+				});
+			}}
+		>
 			<ModalDialog variant="outlined" role="alertdialog">
 				<Sheet
 					sx={{
@@ -214,16 +230,6 @@ const ModalAddPastry = ({ open, setOpen }) => {
 									)}
 								</FormHelperText>
 							</div>
-
-							{pastryData.image && (
-								<AspectRatio ratio="2">
-									<img
-										src={pastryData.image}
-										loading="lazy"
-										alt=""
-									/>
-								</AspectRatio>
-							)}
 
 							<FormControl
 								sx={{
