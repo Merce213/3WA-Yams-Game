@@ -13,6 +13,7 @@ import {
 	Typography,
 } from "@mui/joy";
 import { useState } from "react";
+import { useAddPastryMutation } from "../features/crud";
 
 const ModalAddPastry = ({ open, setOpen }) => {
 	const [pastryData, setPastryData] = useState({
@@ -23,6 +24,8 @@ const ModalAddPastry = ({ open, setOpen }) => {
 	});
 
 	const [errors, setErrors] = useState({});
+
+	const [addPastry] = useAddPastryMutation();
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -40,6 +43,8 @@ const ModalAddPastry = ({ open, setOpen }) => {
 		}
 	};
 
+	console.log("pastryData", pastryData);
+
 	const handleChangeRadioBoolean = (e) => {
 		const { name, value } = e.target;
 
@@ -53,42 +58,6 @@ const ModalAddPastry = ({ open, setOpen }) => {
 				...errors,
 				[name]: "",
 			});
-		}
-	};
-
-	const convertImageToBase64 = (e) => {
-		const file = e.target.files[0];
-
-		if (file) {
-			const reader = new FileReader();
-
-			reader.onload = (readerEvent) => {
-				const content = readerEvent.target.result;
-				setPastryData({
-					...pastryData,
-					image: content,
-				});
-				setErrors({
-					...errors,
-					image: "",
-				});
-			};
-
-			reader.onerror = (error) => {
-				setErrors({
-					...errors,
-					image: `Erreur lors de la lecture du fichier: ${error}`,
-				});
-			};
-
-			if (file.type.startsWith("image/")) {
-				reader.readAsDataURL(file);
-			} else {
-				setErrors({
-					...errors,
-					image: "Le fichier doit être une image",
-				});
-			}
 		}
 	};
 
@@ -114,7 +83,32 @@ const ModalAddPastry = ({ open, setOpen }) => {
 			return;
 		}
 
-		console.log("pastryData", pastryData);
+		try {
+			addPastry(pastryData)
+				.unwrap()
+				.then((data) => {
+					console.log(data);
+				})
+				.catch((error) => {
+					console.error(error);
+				})
+				.finally(() => {
+					window.location.reload();
+				});
+		} catch (error) {
+			console.error(error);
+		}
+
+		setOpen(false);
+
+		setPastryData({
+			name: "",
+			quantity: "",
+			image: "",
+			choice: Boolean,
+		});
+
+		setErrors({});
 	};
 
 	return (
@@ -195,7 +189,12 @@ const ModalAddPastry = ({ open, setOpen }) => {
 									type="file"
 									name="image"
 									accept="image/*"
-									onChange={convertImageToBase64}
+									onChange={(e) => {
+										setPastryData({
+											...pastryData,
+											image: e.target.files[0],
+										});
+									}}
 									className="block w-full text-sm file:mr-4 file:cursor-pointer file:rounded-md file:border-0 file:bg-blue-500 file:px-4 file:py-2.5 file:text-sm file:font-semibold file:text-white file:transition-colors file:duration-200 file:ease-in-out hover:file:bg-blue-700/80 focus:file:ring-2 focus:file:ring-blue-500 focus:file:ring-offset-2"
 								/>
 

@@ -52,7 +52,7 @@ export const pastriesApi = createApi({
 
 		addPastry: builder.mutation({
 			query: (pastryData) => ({
-				url: "/",
+				url: "/pastry",
 				method: "POST",
 				body: pastryData,
 			}),
