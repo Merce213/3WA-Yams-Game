@@ -7,8 +7,8 @@ import {
 	Input,
 	Modal,
 	ModalDialog,
-	Option,
-	Select,
+	Radio,
+	RadioGroup,
 	Sheet,
 	Typography,
 } from "@mui/joy";
@@ -40,11 +40,20 @@ const ModalAddPastry = ({ open, setOpen }) => {
 		}
 	};
 
-	const handleSelectChange = (event, newValue) => {
+	const handleChangeRadioBoolean = (e) => {
+		const { name, value } = e.target;
+
 		setPastryData({
 			...pastryData,
-			status: newValue,
+			[name]: value === "true" ? true : false,
 		});
+
+		if (errors[name]) {
+			setErrors({
+				...errors,
+				[name]: "",
+			});
+		}
 	};
 
 	const convertImageToBase64 = (e) => {
@@ -217,15 +226,16 @@ const ModalAddPastry = ({ open, setOpen }) => {
 								}}
 							>
 								<FormLabel>Status</FormLabel>
-								<Select
+								<RadioGroup
 									name="choice"
 									value={pastryData.choice}
-									defaultValue="false"
-									onChange={handleSelectChange}
+									defaultValue={pastryData.choice}
+									onChange={handleChangeRadioBoolean}
+									sx={{ my: 1 }}
 								>
-									<Option value="false">Forbidden</Option>
-									<Option value="true">Allowed</Option>
-								</Select>
+									<Radio value={false} label="Forbidden" />
+									<Radio value={true} label="Allowed" />
+								</RadioGroup>
 							</FormControl>
 							<Button
 								type="submit"

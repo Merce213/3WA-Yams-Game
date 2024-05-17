@@ -7,24 +7,36 @@ import {
 	Input,
 	Modal,
 	ModalDialog,
-	Option,
-	Select,
+	Radio,
+	RadioGroup,
 	Sheet,
 	Typography,
 } from "@mui/joy";
 import { useEffect, useState } from "react";
+import {
+	useGetPastryByIdQuery,
+	useUpdatePastryMutation,
+} from "../features/crud";
 
 const ModalEditPastry = ({ open, setOpen, id }) => {
 	const [pastryData, setPastryData] = useState({
 		name: "",
 		quantity: "",
 		image: "",
-		choice: "false",
+		choice: Boolean,
 	});
 
 	const [errors, setErrors] = useState({});
 
-	useEffect(() => {}, [id]);
+	const { data, error, isLoading } = useGetPastryByIdQuery(id);
+
+	const [updatePastry] = useUpdatePastryMutation();
+
+	useEffect(() => {
+		if (data) {
+			setPastryData(data);
+		}
+	}, [data]);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -42,11 +54,20 @@ const ModalEditPastry = ({ open, setOpen, id }) => {
 		}
 	};
 
-	const handleSelectChange = (event, newValue) => {
+	const handleChangeRadioBoolean = (e) => {
+		const { name, value } = e.target;
+
 		setPastryData({
 			...pastryData,
-			status: newValue,
+			[name]: value === "true" ? true : false,
 		});
+
+		if (errors[name]) {
+			setErrors({
+				...errors,
+				[name]: "",
+			});
+		}
 	};
 
 	const convertImageToBase64 = (e) => {
@@ -107,7 +128,34 @@ const ModalEditPastry = ({ open, setOpen, id }) => {
 			return;
 		}
 
-		console.log("pastryData", pastryData);
+		try {
+			updatePastry({
+				id,
+				...pastryData,
+			})
+				.unwrap()
+				.then((data) => {
+					console.log(data);
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+		} catch (error) {
+			console.error(error);
+		}
+
+		setOpen(false);
+
+		setPastryData({
+			name: "",
+			quantity: "",
+			image: "",
+			choice: Boolean,
+		});
+
+		setErrors({});
+
+		window.location.reload();
 	};
 
 	return (
@@ -219,15 +267,16 @@ const ModalEditPastry = ({ open, setOpen, id }) => {
 								}}
 							>
 								<FormLabel>Status</FormLabel>
-								<Select
+								<RadioGroup
 									name="choice"
 									value={pastryData.choice}
-									defaultValue="false"
-									onChange={handleSelectChange}
+									defaultValue={pastryData.choice}
+									onChange={handleChangeRadioBoolean}
+									sx={{ my: 1 }}
 								>
-									<Option value="false">Forbidden</Option>
-									<Option value="true">Allowed</Option>
-								</Select>
+									<Radio value={false} label="Forbidden" />
+									<Radio value={true} label="Allowed" />
+								</RadioGroup>
 							</FormControl>
 							<Button
 								type="submit"

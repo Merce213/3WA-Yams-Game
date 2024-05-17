@@ -13,7 +13,7 @@ export const pastriesApi = createApi({
 		}),
 
 		getPastryById: builder.query({
-			query: (id) => `/${id}`,
+			query: (id) => `/pastry/${id}`,
 		}),
 
 		searchPastries: builder.query({
@@ -60,7 +60,7 @@ export const pastriesApi = createApi({
 
 		updatePastry: builder.mutation({
 			query: ({ id, ...updates }) => ({
-				url: `/${id}`,
+				url: `/pastry/${id}`,
 				method: "PUT",
 				body: updates,
 			}),
